@@ -1,0 +1,19 @@
+Metadata-Version: 1.1
+Name: khed
+Version: 0.0.1
+Summary: Free anime downloader, supporting resumable downloads and episodes playlist all at once.
+Home-page: UNKNOWN
+Author: Bhanu Kashyap
+Author-email: kash.bhanu7@gmail.com
+License: MIT
+Description: # Khed
+        Khed is an easy to use, free anime downloader, supporting episodes playlists and resumable downloads.
+        
+Platform: UNKNOWN
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Environment :: Console
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Multimedia :: Video

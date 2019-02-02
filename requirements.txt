@@ -1,0 +1,8 @@
+beautifulsoup4
+bs4
+lxml
+requests
+selenium
+tqdm
+
+
