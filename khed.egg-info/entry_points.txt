@@ -1,3 +1,0 @@
-[console_scripts]
-khed = khed.anime:main
-
