@@ -26,7 +26,7 @@ class Anime:
         self.chiaanime = ChiaAnime()
         self.args = get_args()
         # used to store anime search result.
-        self._result = None
+        self.result = None
 
 
     def _anime_processing(self, anime_result, anime_num=None, option=None):
@@ -167,21 +167,11 @@ class Anime:
             anime_result = self.chiaanime.most_popular()
             self._anime_processing(anime_result)
             
-    # These getters and setters are unnecessary, because you don't seem to be doing anything special
-    # I'd encourage you to remove them and just use the attribute directly.
-        
-    @property
-    def result(self):
-        return self._result
 
-    @result.setter
-    def result(self, val):
-        self._result = val
-        
 
 def main():
     """
-    Main console_scipt entrpy point 
+    Main console_scipt entry point 
     """
     
     anime = Anime()
