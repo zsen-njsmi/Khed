@@ -168,7 +168,6 @@ class Anime:
             self._anime_processing(anime_result)
             
 
-
 def main():
     """
     Main console_scipt entry point 
