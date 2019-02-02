@@ -1,28 +1,23 @@
 """
 Code in this module is very ugly, look at your own risk.
 
-
-Maybe use the paginated display.
-
 """
 import sys
 
 
 def _output(result):
-    """User interface, Needs changing """
+    """Common User interface"""
     print('='*34)
     print('WELCOME, Your search results are : ')
     print('='*34)
     for i,data in enumerate(result):
         num = i+1
         print('{index}. {data_name}'.format(index=num,data_name=data.get('name')))
-    
-
     return 
 
 def _selecting_anime():
     """One function interface to select anime"""
-    # This s nippet is hangable(infinite loop), if user continously enters blank.
+    
     while True:
         move_ahead = input("\nDownload or access anime info, [y/n]? ")
         
@@ -67,7 +62,6 @@ def _selecting_anime():
 
         if move_ahead.casefold() == 'n':
             sys.exit('Okay will see you later.')
-            
     return num,option
     
 def _anime_extractor(s_result : list):
@@ -75,12 +69,10 @@ def _anime_extractor(s_result : list):
     It does something.
     '''
     _output(s_result)
-
     return _selecting_anime()
                 
 def _genre_extractor(g_result : list):
     _output(g_result)
-
     while True:
         move_ahead = input("Hey, want to see animes under specific genre? [y/n] (n for quit): ")
         if move_ahead.casefold() == 'n':
@@ -91,16 +83,13 @@ def _genre_extractor(g_result : list):
             break
         else:
             continue
-
     return genre.casefold()
 
 def extract(passed_result,extractor=None):
     """
     Extracts and outputs the text from the given list
-    e in the e_result stands for extractor result ;)
+
     """
-
-
     # You have to ensure only one of the extractors are given,
     #  or as the arguments specify.
     if extractor=='anime':
@@ -109,7 +98,6 @@ def extract(passed_result,extractor=None):
     if extractor =='genres':
         return _genre_extractor(passed_result)
     
-
 def _selecting_info(info : dict):
     """
     Used to select anime from the user, to show information
@@ -139,10 +127,9 @@ def _selecting_info(info : dict):
         print(value)
         continue
     return move_ahead
-
  
 def anime_info_output(info : dict):
-    #change is required, output not in good formatting
+    
         print("\nWelcome to the info section of anime")
         print("Available info:")
         for i,val in enumerate(info.keys()):
@@ -153,7 +140,6 @@ def anime_info_output(info : dict):
 
 def download_info(episodes=None):
     """Interface to Download
-    
     :return: a tuple of integers
     """
     if not episodes:

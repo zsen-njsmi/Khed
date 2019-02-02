@@ -1,12 +1,10 @@
 """
 The Driver program
 Currently the only site supported is chiaanime.tv
-
 """ 
 import sys
 import os
 
- 
 from .api import ChiaAnime 
 from .args import get_args 
 from .interface import (extract, 
@@ -15,6 +13,7 @@ from .interface import (extract,
 
 from .downloader import Downloader
  
+
 class Anime():
     ''' 
     Main Class
@@ -25,12 +24,12 @@ class Anime():
         # used to store anime search result.
         self._result = None
 
+
     def _anime_processing(self,anime_result,anime_num=None,option=None):
         """
         Common interface for processing anime
         result.
         """
-
         if not anime_num and not option:
             anime_num, option = extract(anime_result,extractor='anime')
         url = anime_result[anime_num-1].get('url')
@@ -58,6 +57,7 @@ class Anime():
         if not anime_result:
             sys.exit("Sorry,no results found for {anime_name}, maybe try its japanese name ".format(anime_name=anime_name))
         self._anime_processing(anime_result,index,choice)
+
 
     def _create_download_folder(self):
         """
@@ -102,6 +102,7 @@ class Anime():
             downloader.run(url)
         sys.exit('Bye :D')
 
+
     def anime_info(self,anime_url):
         '''
         Provides the information about an anime, 
@@ -118,6 +119,7 @@ class Anime():
             # search result, use the temporary search result
             self._anime_processing(self.result)
         sys.exit('Bye :D')
+
 
     def run(self):
         """
@@ -139,28 +141,25 @@ class Anime():
             index = args.search_index
             self._searcher(anime,index,choice='i')
         
-
         if args.genres: 
             genres_result = self.chiaanime.show_genres()
             genre_name = extract(genres_result,extractor='genres')
             under_genre_result = self.chiaanime.under_genre(genre_name=genre_name)
             self._anime_processing(under_genre_result)
 
- 
         if args.most_popular:
             anime_result = self.chiaanime.most_popular()
             self._anime_processing(anime_result)
         
-        
-        
     @property
     def result(self):
         return self._result
-    
+
     @result.setter
     def result(self,val):
         self._result = val
         
+
 def main():
     """
     Main console_scipt entrpy point 

@@ -10,8 +10,6 @@ internet connection.
 
 """
 
-
-
 import os 
 
 from selenium import webdriver
@@ -20,9 +18,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import requests 
 from bs4 import BeautifulSoup
-
-
-
 
 class ChiaAnime():
     """API To chiaanime.tv site"""
@@ -45,7 +40,6 @@ class ChiaAnime():
         res.raise_for_status()
         soup = BeautifulSoup(res.text,'lxml')   # add lxml to requirements.
         raw_result = soup.select('[class~=title] > a')       # Results.
-        
         # if raw_result is empty, list will be empty, thus will evaluate to None
         result = [
                     {
@@ -69,10 +63,7 @@ class ChiaAnime():
         res = s.get(url)
         res.raise_for_status()
         soup = BeautifulSoup(res.text,'lxml')
-        #result in raw form (includes the tags also in the 
-        # formed list).
         raw_result = soup.select('p[style] > a')
-        
         
         result = [
                     {
@@ -97,8 +88,8 @@ class ChiaAnime():
         url = '{base_url}/{add_url}'.format(base_url=self.base_url,add_url=add_url)
         res = s.get(url)
         soup = BeautifulSoup(res.text,'lxml')
-        
         raw_result = soup.select('h3 > a[style]')
+
         result = [
                     {
                         'name':elem.text,
@@ -118,7 +109,6 @@ class ChiaAnime():
         s = self.session
         popular = 'most-popular-anime-series/'
         url = '{base_url}/{added_info}'.format(base_url=self._base_url,added_info=popular)
-
         res = s.get(url)  
         res.raise_for_status()  # raises error with connectivity
         soup = BeautifulSoup(res.text,'lxml')
@@ -145,7 +135,6 @@ class ChiaAnime():
         res.raise_for_status()
         soup = BeautifulSoup(res.text,'lxml')
 
-
         # Due to ineffecient site building, and ineffecient coding, following is done :/
         anime_info = soup.select('blockquote > div')
         anime_plot = soup.select('blockquote > p')
@@ -155,12 +144,10 @@ class ChiaAnime():
 
         # The above give something like [['english','some value'],['another','another_value']
         
-       
         result_dict = {
                     i[0].casefold():' '.join(i[1:]).strip() for i in paired_values
         }
         # The above converts the paired values to dict.
-
         return result_dict
 
 
@@ -174,16 +161,13 @@ class ChiaAnime():
                       Default range is 1, only the first episode url
         :yield: episode_download_url
         """
-
         s = self.session
         res = s.get(anime_url)
         soup = BeautifulSoup(res.text,'lxml')
         all_episode_links = soup.select('h3[itemprop] > a')
-        
         # Episode links are in reverse order
         all_episode_links.reverse()
 
-        
         driver = self._get_browser()
         for i in all_episode_links[start-1: end]:
             '''
@@ -221,7 +205,6 @@ class ChiaAnime():
         Internal usage, gets the browser to be used for scraping
         :return: A selenium webdriver
         """
-        
         if browser.casefold() == 'firefox':
             driver_options = webdriver.FirefoxOptions()
             driver_options.add_argument('--headless')
@@ -234,7 +217,6 @@ class ChiaAnime():
         :param episode_url: url (str) of the episode
         :param return: (str) of download url
         """
-        
         anime_premium_link = self._url_to_anime_premium(episode_url)
         driver = browser
         driver.get(anime_premium_link)
@@ -251,11 +233,9 @@ class ChiaAnime():
         
         return episode_download_urls
     
-
     @property
     def base_url(self):
         return self._base_url
-
 
     @base_url.setter
     def base_url(self,url):

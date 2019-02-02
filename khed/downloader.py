@@ -6,10 +6,9 @@ asynch download.
 
 """
 import os
-import re
+
 import requests
 from bs4 import BeautifulSoup
-
 from tqdm import tqdm
 
 class Downloader():

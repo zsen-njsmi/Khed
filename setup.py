@@ -8,11 +8,9 @@ with open(filename) as readme:
     long_description = readme.read()
 
 
-
 def read_requirements(requirements):
     """
     Parse a requirements file
-
     :return: list of str for each package
     """
     file_path = os.path.join(__dir__,requirements)
@@ -22,7 +20,7 @@ def read_requirements(requirements):
 
 required = read_requirements('requirements.txt')
 short_description = 'Free anime downloader, supporting resumable downloads and episodes playlist all at once.'
-
+ 
 setup(
     name='khed',
     version='0.0.1',
@@ -34,9 +32,7 @@ setup(
     license='MIT',
     long_description=long_description,
     classifiers=[
-        
         'License :: OSI Approved :: MIT License',
-
         'Operating System :: POSIX :: Linux',
         'Environment :: Console',
 
