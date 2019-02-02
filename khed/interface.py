@@ -147,7 +147,7 @@ def anime_info_output(info : dict):
         print("Available info:")
         for i,val in enumerate(info.keys()):
             num = i + 1
-            print("\t{index}\t\t{val}".format(index=num,val=val))
+            print("\t{index}. {val}".format(index=num,val=val))
         # sys will exit in _selecting_info if no info is selected
         return _selecting_info(info)
 
