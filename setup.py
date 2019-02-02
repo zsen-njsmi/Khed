@@ -23,7 +23,7 @@ short_description = 'Free anime downloader, supporting resumable downloads and e
  
 setup(
     name='khed',
-    version='0.0.1',
+    version='0.0.2',
     description=short_description,
     author='Bhanu Kashyap',
     author_email='kash.bhanu7@gmail.com',
