@@ -17,7 +17,7 @@ Currently supported site is [chia-anime](http://ww2.chia-anime.tv/)
 
 ## Dependencies
 
-Currently on *nix* like Operating Systems are supported.
+Currently only *nix* like Operating Systems are supported.
 
 Requires Python 3.4+ and pip3 for installing and running.
 
