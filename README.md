@@ -2,7 +2,10 @@ Khed
 ---
 Khed is an easy to use, **Free anime downloader**, supporting episodes playlists and resumable downloads. At present it only supports *nix* like Operating System. Although its free, it is recommended that you don't abuse this program. 
 Currently supported site is [chia-anime](http://ww2.chia-anime.tv/) 
- 
+
+![upload_content1](https://user-images.githubusercontent.com/45007276/52194145-a4f1b000-2878-11e9-9fe1-59a3595e46a3.png) 
+![upload_content2](https://user-images.githubusercontent.com/45007276/52194160-b5a22600-2878-11e9-904d-959da9d5e2fe.png)
+
 ## Features
 
 1. Searching of anime by name.
