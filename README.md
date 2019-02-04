@@ -23,7 +23,9 @@ Requires Python 3.4+ and pip3 for installing and running.
 
 It relies on Firefox headless mode, so make sure you have Firefox version > 56.0 installed, also **geckodriver** is needed, you can follow [Install geckodriver for firefox](https://askubuntu.com/questions/870530/how-to-install-geckodriver-in-ubuntu) to see how to download and configure it.
 
-*NOTE: This program is tested on Ubuntu 18.04 with Python 3.6*
+*To ensure that firefox headless is supported, enter `$firefox --headless` and see that it works correctly*
+
+*NOTE: This program is tested on Ubuntu 18.04 with Python 3.6, Firefox v64.0 and geckodriver v0.23.0*
 
 ## Installation
 
