@@ -13,7 +13,6 @@ from .args import get_args
 from .interface import (extract, 
                         anime_info_output,
                         download_info)
-
 from .downloader import Downloader
  
 
