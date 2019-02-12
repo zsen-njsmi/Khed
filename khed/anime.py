@@ -3,21 +3,21 @@
 """
 The Driver program
 Currently the only site supported is chiaanime.tv
-""" 
+"""
 
 import sys
 from pathlib import Path
 
-from .api import ChiaAnime 
-from .args import get_args 
-from .interface import (extract, 
+from .api import ChiaAnime
+from .args import get_args
+from .interface import (extract,
                         anime_info_output,
                         download_info)
 from .downloader import Downloader
- 
+
 
 class Anime:
-    ''' 
+    '''
     Main Class
     '''
 
@@ -39,7 +39,7 @@ class Anime:
         url = anime_result[anime_num-1].get('url')
         if option=='i':
             self.anime_info(url)
-        
+
         if option=='d':
             self.anime_download(url)
 
@@ -73,21 +73,21 @@ class Anime:
         folder = self.args.folder
         cur_dir = Path.cwd() # Consider replacing this with Path(__file__).parent
         folder_path = cur_dir / folder
-        
+
         if not folder_path.exists():
             folder_path.mkdir()
-            
+
         return folder_path
 
 
-    def anime_download(self, anime_url): 
+    def anime_download(self, anime_url):
         """Download anime
         :param anime_url: Url to animes main page
-        
+
         """
-        
+
         folder = self._create_download_folder()
-        
+
         print("+"*34)
         print("Downloaded folder is: {}".format(folder))
         print("To change rerun the program with --folder option")
@@ -99,17 +99,17 @@ class Anime:
             ep_range = download_info(self.args.episode_range)
 
         else:
-        # Download is indirectly invoked, give 
+        # Download is indirectly invoked, give
         # user an interface for specifying range
             ep_range = download_info()
-          
+
         anime_name = Path(anime_url.strip('/')).parent
         print('\nDownloading {}, please wait'.format(anime_name))
 
         #extracting episode ranges
         download_url_generator = self.chiaanime.get_episodes_link
         downloader = Downloader(folder)
-        
+
         for url in download_url_generator(anime_url, *ep_range):
             downloader.run(url)
         sys.exit('Bye :D')
@@ -117,13 +117,13 @@ class Anime:
 
     def anime_info(self, anime_url):
         '''
-        Provides the information about an anime, 
+        Provides the information about an anime,
         :param anime_url: main url of the anime
-        ''' 
-        
+        '''
+
         result_info = self.chiaanime.anime_info(url=anime_url)
         option = anime_info_output(result_info)
-        
+
         if option == 'download':
             self.anime_download(anime_url)
 
@@ -139,9 +139,9 @@ class Anime:
         """
         Main function
         """
-        
+
         args = self.args
-        
+
         if args.search: # add a waiting message, probably use the threading.(could be fun :D)
             anime = args.search
             self._searcher(anime)
@@ -150,13 +150,13 @@ class Anime:
             anime = args.download_anime
             index = args.search_index
             self._searcher(anime, index, choice='d')
-        
+
         if args.info:
             anime = args.info
             index = args.search_index
             self._searcher(anime, index, choice='i')
-        
-        if args.genres: 
+
+        if args.genres:
             genres_result = self.chiaanime.show_genres()
             genre_name = extract(genres_result, extractor='genres')
             under_genre_result = self.chiaanime.under_genre(genre_name=genre_name)
@@ -165,12 +165,12 @@ class Anime:
         if args.most_popular:
             anime_result = self.chiaanime.most_popular()
             self._anime_processing(anime_result)
-            
+
 
 def main():
     """
-    Main console_scipt entry point 
+    Main console_scipt entry point
     """
-    
+
     anime = Anime()
     anime.run()
