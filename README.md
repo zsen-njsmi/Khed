@@ -194,10 +194,6 @@ $ pip3 install -e .
 ```
 So that *no* re-installing has to be done if you made a change to the program.
 
-## Motivation And Future
-
-I made this program to learn about python programming and development in general, currently I am working on making it compatible with other Operating Systems.
-This program is purely for education purpose, you are responsible for its use.
 
 
 
