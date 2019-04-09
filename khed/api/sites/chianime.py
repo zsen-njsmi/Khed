@@ -1,10 +1,10 @@
 """
 This module provides API like service for the anime site chiaanime.tv
-It used selenium for the final step in the process of getting information
+It uses selenium for the final step in the process of getting information
 if anime is to be downloaded, as the download link is rendered by
 javascript.
 This currently only supports Firefox headless versions.
-Use of selenium creates an added overhead and may slow down the script
+Use of Firefox-Headless creates an added overhead and may slow down the script
 and thus it is recommended that you have atleast a moderate 
 internet connection.
 
@@ -232,7 +232,7 @@ class ChiaAnime():
         }
         
         return episode_download_urls
-    
+    #There is no such use of property decorators, just used for learning purposes ;)
     @property
     def base_url(self):
         return self._base_url
